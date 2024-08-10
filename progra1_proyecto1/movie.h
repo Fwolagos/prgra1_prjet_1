@@ -21,8 +21,17 @@ public:
 	Movie(string, int, string, int, string);
 	~Movie();
 	//===============================gets
-	//string getName
+	string getName();
+	int getDuration();
+	string getSynapse();
+	int getReviews();
+	string getLanguage();
 	//===============================sets
+	void setName(string);
+	void setDuration(int);
+	void setSynapse(string);
+	void setReviews(int);
+	void setLanguage(string);
 
 };
 #endif
