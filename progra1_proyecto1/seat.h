@@ -13,6 +13,13 @@ private:
 
 public:
     Seat();
+    Seat(int, string);
     ~Seat();
+
+    void setId(int);
+    void setState(string);
+
+    int getId();
+    string getState();
 };
 #endif
