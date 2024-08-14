@@ -4,7 +4,7 @@
 
 
 Seat::Seat() {
-	id = "0";
+	id = 0;
 	state = "disponible";
 
 }
