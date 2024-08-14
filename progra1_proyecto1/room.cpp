@@ -3,16 +3,28 @@
 
 
 #pragma region Builders
-
-#pragma endregion
-Room::Room(int id, int seatsNumber, double price) {
+Room::Room(int id, double price) {
 	this->id = id;
-	this->seatsNumber = seatsNumber;
+	seatsNumber = 100;
 	this->price = price;
 	for (int i = 0; i < MATRIX_SEAT * MATRIX_SEAT; i++) {
-		roomSeats[i/MATRIX_SEAT][i%MATRIX_SEAT]
+		roomSeats[i / MATRIX_SEAT][i % MATRIX_SEAT].setId(i);
+		roomSeats[i / MATRIX_SEAT][i % MATRIX_SEAT].setState("available");
 	}
 }
+
+Room::Room() {
+	id = rand() % 100;
+	seatsNumber = 100;
+	for (int i = 0; i < MATRIX_SEAT * MATRIX_SEAT; i++) {
+		roomSeats[i / MATRIX_SEAT][i % MATRIX_SEAT].setId(i);
+		roomSeats[i / MATRIX_SEAT][i % MATRIX_SEAT].setState("available");
+	}
+}
+
+Room::~Room() {}
+#pragma endregion
+
 
 #pragma region Gets
 

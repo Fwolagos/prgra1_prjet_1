@@ -14,7 +14,7 @@ private:
     Seat roomSeats[MATRIX_SEAT][MATRIX_SEAT];
 
 public:
-    Room(int,int,double);
+    Room(int,double);
     Room();
     ~Room();
 

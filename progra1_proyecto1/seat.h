@@ -9,7 +9,7 @@ class Seat
 {
 private:
     int id;
-    string state; //Disponible | Reservada | Vendida
+    string state; //Available | Reserved | Sold
 
 public:
     Seat();
