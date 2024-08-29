@@ -26,6 +26,17 @@ using namespace std;
  *          coincide con ninguno de los valores esperados.
  */
 void header(string);
+
+/**
+ * @brief Muestra información sobre el creador y permite salir o volver.
+ *
+ * Imprime el nombre del creador y espera una entrada del usuario. Si el usuario presiona
+ * 'q', intenta cerrar la terminal usando `system("exit")`. Presionar cualquier otra tecla
+ * regresa al menú anterior.
+ *
+ * @note El uso de `system("exit")` puede no cerrar la terminal en todos los sistemas.
+ */
+void about();
 #pragma endregion
 
 
@@ -104,6 +115,19 @@ void header(string title) {
 
 		return;
 	}
+}
+
+void about() {
+	char on;
+	header("archivo");
+
+	cout << "* - Creador: Antony Josue Prendas Vega" << endl;
+	cout << "* - Precione q para salir o esc para volver: ";
+	cin >> on;
+	if (on == 'q') {
+		system("exit");
+	}
+	return;
 }
 
 
