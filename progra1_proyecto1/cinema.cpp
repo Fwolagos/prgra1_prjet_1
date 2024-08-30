@@ -71,6 +71,142 @@ Sale Cinema::getCinemaSales(int position) {
 #pragma endregion
 
 #pragma region Methods
+void Cinema::header(string title) {
+	/// Tipos de titulos para imprimir
+	/// titulo: principal
+	/// titulo: archivo
+	/// titulo: mantenimiento
+	/// titulo: reserva
+	/// titulo: venta
 
+	system("cls");
+
+	/// Titulo: principal
+	if (title == "principal") {
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+		cout << "*                Bienvenidos al Cine Fwolagos                 *" << endl;
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+
+		return;
+	}
+	/// Titulo: archivo
+	if (title == "archivo") {
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+		cout << "*                Acerca del  Cine de Fwolagos                 *" << endl;
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+
+		return;
+	}
+	/// Titulo: mantenimiento
+	if (title == "mantenimiento") {
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+		cout << "*                Mantenimiento Cine Fwolagos                  *" << endl;
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+
+		return;
+	}
+	/// Titulo: reserva
+	if (title == "reserva") {
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+		cout << "*                Reservaciones Cine Fwolagos                  *" << endl;
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+
+		return;
+	}
+	/// Titulo: venta
+	if (title == "venta") {
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+		cout << "*                     Ventas Cine Fwolagos                    *" << endl;
+		cout << endl;
+		cout << "***************************************************************";
+		cout << endl;
+
+		return;
+	}
+}
+
+void Cinema::about() {
+	char on;
+	header("archivo");
+
+	cout << "* - Creador: Antony Josue Prendas Vega" << endl;
+	cout << "* - Precione q para salir o esc para volver: ";
+	cin >> on;
+	if (on == 'q') {
+		system("exit");
+	}
+	return;
+}
+
+void Cinema::add(string changeAttribute) {
+	/// Tipo: pelicula
+	/// Tipo: salas
+	/// Tipo: horarios
+	
+	if (changeAttribute == "pelicula") {
+		for (int i = 0; i < MOVIES; i++) {
+			if (cinemaMovies[i].getName() != "") {
+				string name, synapse, languaje;
+				int duration, reviews;
+
+				cout << "Ingrese el nombre de la pelicual: " << endl;
+				cin >> name;
+				cinemaMovies[i].setName(name);
+				cout << "Ingrese la duracion de la pelicula: " << endl;
+				cin >> duration;
+				cinemaMovies[i].setDuration(duration);
+				cout << "Ingrese la synapsis de la pelicula: " << endl;
+				cin >> synapse;
+				cinemaMovies[i].setSynapse(synapse);
+				cout << "Ingrese la calificacion de la pelicula del 0 al 5: " << endl;
+				cin >> reviews;
+				cinemaMovies[i].setReviews(reviews);
+				cout << "Ingrese en que lenguaje esta la pelicula: " << endl;
+				cin >> languaje;
+				cinemaMovies[i].setLanguage(languaje);
+				return;
+			}
+		}
+	}
+	if (changeAttribute == "salas") {
+		for (int i = 0; i < ROOMS; i++) {
+			if (cinemaRooms[i].getId() == -1) {///bueno aqui nos puede dar errores para tenerlos en cuenta
+				int id, double price;
+				cout << "Ingrese la id correspodiente para la sala: " << endl;
+				cin >> id;
+				cinemaRooms[i].setId(id);
+				cout << "Ingrese el costo de la entrada: " << endl;
+				cin >> price;
+				cinemaRooms[i].setPrice(price);
+				return;
+			}
+		}
+	}
+}
+void Cinema::edit(string changeAttribute) {
+	/// Tipo: pelicula
+	/// Tipo: salas
+	/// Tipo: horarios
+
+}
+void Cinema::menus(string menuType) {}
 #pragma endregion
 

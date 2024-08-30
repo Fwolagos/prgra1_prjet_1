@@ -14,7 +14,8 @@ Room::Room(int id, double price) {
 }
 
 Room::Room() {
-	id = rand() % 100000;
+	id = -1; /// las id van de 0 en adelante y si hay un -1 indica que es por defabrica que esta vacio o sin editar no se 
+	price = -1;
 	seatsNumber = MATRIX_SEAT * MATRIX_SEAT;
 	for (int i = 0; i < MATRIX_SEAT * MATRIX_SEAT; i++) {
 		roomSeats[i / MATRIX_SEAT][i % MATRIX_SEAT].setId(i);
