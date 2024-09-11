@@ -189,7 +189,8 @@ void Cinema::add(string changeAttribute) {
 	if (changeAttribute == "salas") {
 		for (int i = 0; i < ROOMS; i++) {
 			if (cinemaRooms[i].getId() == -1) {///bueno aqui nos puede dar errores para tenerlos en cuenta
-				int id, double price;
+				int id;
+				double price;
 				cout << "Ingrese la id correspodiente para la sala: " << endl;
 				cin >> id;
 				cinemaRooms[i].setId(id);
