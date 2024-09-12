@@ -186,6 +186,14 @@ void Cinema::add(string changeAttribute) {
 			}
 		}
 	}
+	if (changeAttribute == "horarios") {
+		for (int i = 0; i < SCHEDULES; i++) {
+			if (cinemaSchedules[i].getDate() == "00/00/00") {///bueno aqui nos puede dar errores para tenerlos en cuenta
+				
+				return;
+			}
+		}
+	}
 	if (changeAttribute == "salas") {
 		for (int i = 0; i < ROOMS; i++) {
 			if (cinemaRooms[i].getId() == -1) {///bueno aqui nos puede dar errores para tenerlos en cuenta
@@ -202,12 +210,34 @@ void Cinema::add(string changeAttribute) {
 		}
 	}
 }
-void Cinema::edit(string changeAttribute) {
+void Cinema::edit(string changeAttribute, string movieName) {
 	/// Tipo: pelicula
 	/// Tipo: salas
 	/// Tipo: horarios
-
+	
 }
 void Cinema::menus(string menuType) {}
+int Cinema::searchInVectorByName(string vector, string name) {
+	/// Busqueda por: pelicula
+	
+
+	if (vector == "pelicula") {
+		for (int i = 0; i < MOVIES; i++) {
+			if (name == cinemaMovies[i].getName()) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	return -1;
+}
+
+int Cinema::searchInVectorById(string vector, int id) {
+
+
+}
+
+
 #pragma endregion
 

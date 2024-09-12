@@ -69,8 +69,10 @@ private:
 
 
 	void add(string);
-	void edit(string);
+	void edit(string, string);
 	void menus(string);
+	int searchInVectorByName(string, string);
+	int searchInVectorById(string, int);
 public:
 
 #pragma region constructors
