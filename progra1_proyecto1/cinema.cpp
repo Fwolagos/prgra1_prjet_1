@@ -234,8 +234,20 @@ int Cinema::searchInVectorByName(string vector, string name) {
 }
 
 int Cinema::searchInVectorById(string vector, int id) {
+	/// Busqueda por: salas
+	/// Busqueda por: horarios
+	/// Busqueda por: reservas
+	/// Busqueda por: ventas
+	if (vector == "salas") {
+		for (int i = 0; i < ROOMS; i++) {
+			if (id == cinemaRooms[i].getId()) {
+				return i;
+			}
+		}
 
-
+	}
+	
+	return -1;
 }
 
 
