@@ -11,20 +11,20 @@ class Sale
 {
 private:
 	Booking booking;
-	string idCostumer;
-	string cartNumber;
+	int idCostumer;
+	int cartNumber;
 public:
 	Sale();
-	Sale(Booking, string, string);
+	Sale(Booking, int, int);
 	~Sale();
 
 	void setBooking(Booking);
-	void setIdCostumer(string);
-	void setCartNumber(string);
+	void setIdCostumer(int);
+	void setCartNumber(int);
 
 	Booking getBooking();
-	string getIdCostumer();
-	string getCartNumber();
+	int getIdCostumer();
+	int getCartNumber();
 
 };
 #endif

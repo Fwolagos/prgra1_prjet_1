@@ -3,11 +3,11 @@
 #pragma region Constructors
 Sale::Sale() {
 	booking = Booking();
-	idCostumer = rand() % 1000;
-	cartNumber = rand() % 1000;
+	idCostumer = -1;
+	cartNumber = -1;
 }
 
-Sale::Sale(Booking booking, string idCostumer, string cartNumber) {
+Sale::Sale(Booking booking, int idCostumer, int cartNumber) {
 	this->booking = booking;
 	this->idCostumer = idCostumer;
 	this->cartNumber = cartNumber;
@@ -23,11 +23,11 @@ void Sale::setBooking(Booking booking) {
 	this->booking = booking;
 }
 
-void Sale::setIdCostumer(string idCostumer) {
+void Sale::setIdCostumer(int idCostumer) {
 	this->idCostumer = idCostumer;
 }
 
-void Sale::setCartNumber(string cartNumber) {
+void Sale::setCartNumber(int cartNumber) {
 	this->cartNumber = cartNumber;
 }
 #pragma endregion
@@ -37,11 +37,11 @@ Booking Sale::getBooking() {
 	return booking;
 }
 
-string Sale::getIdCostumer() {
+int Sale::getIdCostumer() {
 	return idCostumer;
 }
 
-string Sale::getCartNumber() {
+int Sale::getCartNumber() {
 	return cartNumber;
 }
 #pragma endregion
