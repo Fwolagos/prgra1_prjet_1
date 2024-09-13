@@ -217,10 +217,12 @@ void Cinema::edit(string changeAttribute, string movieName) {
 	
 }
 void Cinema::menus(string menuType) {}
+
+
 int Cinema::searchInVectorByName(string vector, string name) {
 	/// Busqueda por: pelicula
+	/// Busqueda por: horarios
 	
-
 	if (vector == "pelicula") {
 		for (int i = 0; i < MOVIES; i++) {
 			if (name == cinemaMovies[i].getName()) {
@@ -237,15 +239,16 @@ int Cinema::searchInVectorByName(string vector, string name) {
 		}
 
 	}
+	
 
 	return -1;
 }
 
 int Cinema::searchInVectorById(string vector, int id) {
 	/// Busqueda por: salas
-	/// Busqueda por: horarios
 	/// Busqueda por: reservas
 	/// Busqueda por: ventas
+	/// 
 	if (vector == "salas") {
 		for (int i = 0; i < ROOMS; i++) {
 			if (id == cinemaRooms[i].getId()) {
@@ -256,14 +259,20 @@ int Cinema::searchInVectorById(string vector, int id) {
 	}
 	if (vector == "reservas") {
 		for (int i = 0; i < BOOKINGS; i++) {
-			if (id == cinemaBookings[i].get) {
+			if (id == cinemaBookings[i].getBookingId()) {
 				return i;
 			}
 		}
 
 	}
-	
-	
+	if (vector == "ventas") {
+		for (int i = 0; i < BOOKINGS; i++) {
+			if (id == cinemaSales[i].getCartNumber()) {
+				return i;
+			}
+		}
+
+	}
 	return -1;
 }
 
