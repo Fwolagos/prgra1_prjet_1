@@ -73,6 +73,7 @@ private:
 	void menus(string);
 	int searchInVectorByName(string, string);
 	int searchInVectorById(string, int);
+	int input();
 public:
 
 #pragma region constructors

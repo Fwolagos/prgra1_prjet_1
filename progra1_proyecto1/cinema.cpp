@@ -276,6 +276,25 @@ int Cinema::searchInVectorById(string vector, int id) {
 	return -1;
 }
 
+int Cinema::input() {
+	int value = 0;
+	cout << "Ingrese unicamente numero." << endl;	
+	bool isValid = true;
+
+	while (isValid) {
+		cin >> value;
+		if (cin.fail()) {                                        // Verifica si la entrada falló
+			cin.clear();                                         // Limpia el estado de error de cin 
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora el resto de la línea
+			cout << "Opcion no valida. Por favor, intente de nuevo.\n";
+		}
+		else {
+			isValid = false;
+
+		}
+	}
+	return value;
+}
 
 #pragma endregion
 
