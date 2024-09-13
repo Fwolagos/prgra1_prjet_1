@@ -171,13 +171,13 @@ void Cinema::add(string changeAttribute) {
 				cin >> name;
 				cinemaMovies[i].setName(name);
 				cout << "Ingrese la duracion de la pelicula: " << endl;
-				cin >> duration;
+				duration = input();
 				cinemaMovies[i].setDuration(duration);
 				cout << "Ingrese la synapsis de la pelicula: " << endl;
 				cin >> synapse;
 				cinemaMovies[i].setSynapse(synapse);
 				cout << "Ingrese la calificacion de la pelicula del 0 al 5: " << endl;
-				cin >> reviews;
+				reviews = input();
 				cinemaMovies[i].setReviews(reviews);
 				cout << "Ingrese en que lenguaje esta la pelicula: " << endl;
 				cin >> languaje;
@@ -189,7 +189,13 @@ void Cinema::add(string changeAttribute) {
 	if (changeAttribute == "horarios") {
 		for (int i = 0; i < SCHEDULES; i++) {
 			if (cinemaSchedules[i].getDate() == "00/00/00") {///bueno aqui nos puede dar errores para tenerlos en cuenta
+				string date;
+				string startHour;
+				string endHour;
+
+				cout << "Ingrese la fecha en el que se tramitira la pelicual: (Use un formato 00/00/00) " << endl;
 				
+
 				return;
 			}
 		}
@@ -200,10 +206,10 @@ void Cinema::add(string changeAttribute) {
 				int id;
 				double price;
 				cout << "Ingrese la id correspodiente para la sala: " << endl;
-				cin >> id;
+				id = input();
 				cinemaRooms[i].setId(id);
 				cout << "Ingrese el costo de la entrada: " << endl;
-				cin >> price;
+				price = input();
 				cinemaRooms[i].setPrice(price);
 				return;
 			}
@@ -277,7 +283,7 @@ int Cinema::searchInVectorById(string vector, int id) {
 }
 
 int Cinema::input() {
-	int value = 0;
+	double value = 0;
 	cout << "Ingrese unicamente numero." << endl;	
 	bool isValid = true;
 
