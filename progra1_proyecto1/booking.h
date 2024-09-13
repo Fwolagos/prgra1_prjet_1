@@ -3,6 +3,7 @@
 #define BOOKING_H
 #define LIMIT_SEATS 5
 
+
 #include <iostream>
 using namespace std;
 #include "seat.h"
@@ -17,5 +18,16 @@ private:
     int bookingId;
 
 public:
+    Booking();
+    ~Booking();
+    void setSchedule(Schedule);
+    void setBookSeats(Seat, int);/// objeto y posicion 
+    void settotalPrice(double);
+    void setBookingId(int);
+    Schedule getSchedule();
+    Seat getBookSeats(int);///posicion
+    double getTotalPrice();
+    int getBookingId();
+    
 };
 #endif

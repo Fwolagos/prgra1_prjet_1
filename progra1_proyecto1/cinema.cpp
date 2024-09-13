@@ -229,6 +229,14 @@ int Cinema::searchInVectorByName(string vector, string name) {
 		}
 		return -1;
 	}
+	if (vector == "horarios") {
+		for (int i = 0; i < SCHEDULES; i++) {
+			if (name == cinemaSchedules[i].getMovie().getName()) {
+				return i;
+			}
+		}
+
+	}
 
 	return -1;
 }
@@ -246,6 +254,15 @@ int Cinema::searchInVectorById(string vector, int id) {
 		}
 
 	}
+	if (vector == "reservas") {
+		for (int i = 0; i < BOOKINGS; i++) {
+			if (id == cinemaBookings[i].get) {
+				return i;
+			}
+		}
+
+	}
+	
 	
 	return -1;
 }
