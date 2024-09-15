@@ -10,7 +10,7 @@ Seat::Seat(int id, string state) {
 
 Seat::Seat() {
 	id = 0;
-	state = "disponible";
+	state = "Available";
 
 }
 Seat::~Seat() {
