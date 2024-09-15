@@ -13,7 +13,7 @@ class Booking
 {
 private:
     Schedule schedule; //*
-    Seat bookSeats[5]; //Limite de 5 asientos por reserva
+    Seat bookSeats[LIMIT_SEATS]; //Limite de 5 asientos por reserva
     double totalPrice;
     int bookingId;
 
