@@ -74,6 +74,10 @@ private:
 	int searchInVectorByName(string, string);
 	int searchInVectorById(string, int);
 	int input();
+	void printCinemaMovies();
+	void printCinemaRooms();
+	void printCinemaSchedules();
+	void printCinemaBookings();
 public:
 
 #pragma region constructors

@@ -11,7 +11,7 @@ Cinema::Cinema() {
 	for (int i = 0; i < SCHEDULES; i++) {
 		cinemaSchedules[i] = Schedule();
 	}
-	for (int i = 0; i < BOOKINGS ; i++) {
+	for (int i = 0; i < BOOKINGS; i++) {
 		cinemaBookings[i] = Booking();
 	}
 	for (int i = 0; i < SALES; i++) {
@@ -60,7 +60,7 @@ Room Cinema::getCinemaRooms(int position) {
 Schedule Cinema::getCinemaSchedules(int position) {
 	return cinemaSchedules[position];
 }
-	
+
 Booking Cinema::getCinemaBookings(int position) {
 	return cinemaBookings[position];
 }
@@ -160,7 +160,7 @@ void Cinema::add(string changeAttribute) {
 	/// Tipo: pelicula
 	/// Tipo: salas
 	/// Tipo: horarios
-	
+
 	if (changeAttribute == "pelicula") {
 		for (int i = 0; i < MOVIES; i++) {
 			if (cinemaMovies[i].getName() != "") {
@@ -194,7 +194,7 @@ void Cinema::add(string changeAttribute) {
 				string endHour;
 
 				cout << "Ingrese la fecha en el que se tramitira la pelicual: (Use un formato 00/00/00) " << endl;
-				
+
 
 				return;
 			}
@@ -216,19 +216,21 @@ void Cinema::add(string changeAttribute) {
 		}
 	}
 }
+
 void Cinema::edit(string changeAttribute, string movieName) {
 	/// Tipo: pelicula
 	/// Tipo: salas
 	/// Tipo: horarios
-	
+
 }
+
 void Cinema::menus(string menuType) {}
 
 
 int Cinema::searchInVectorByName(string vector, string name) {
 	/// Busqueda por: pelicula
 	/// Busqueda por: horarios
-	
+
 	if (vector == "pelicula") {
 		for (int i = 0; i < MOVIES; i++) {
 			if (name == cinemaMovies[i].getName()) {
@@ -245,7 +247,7 @@ int Cinema::searchInVectorByName(string vector, string name) {
 		}
 
 	}
-	
+
 
 	return -1;
 }
@@ -284,7 +286,7 @@ int Cinema::searchInVectorById(string vector, int id) {
 
 int Cinema::input() {
 	double value = 0;
-	cout << "Ingrese unicamente numero." << endl;	
+	cout << "Ingrese unicamente numero." << endl;
 	bool isValid = true;
 
 	while (isValid) {
@@ -300,6 +302,81 @@ int Cinema::input() {
 		}
 	}
 	return value;
+}
+
+void Cinema::printCinemaMovies() {
+	printf("+-----------------------+---------+-------------------------+---------+-----------+\n");
+	printf("| %-21s | %7s | %-23s | %7s | %-9s |\n", "Nombre", "Duración", "Sinopsis", "Reseñas", "Idioma");
+	printf("+-----------------------+---------+-------------------------+---------+-----------+\n");
+	for (int i = 0; i < MOVIES; i++) {
+
+		printf("| %-21s | %7d | %-23s | %7d | %-9s |\n", cinemaMovies[i].getName(), cinemaMovies[i].getDuration(),
+			cinemaMovies[i].getSynapse(), cinemaMovies[i].getReviews(), cinemaMovies[i].getLanguage());
+		printf("+-----------------------+---------+-------------------------+---------+-----------+\n");
+
+	}
+}
+
+void Cinema::printCinemaRooms() {
+
+	for (int i = 0; i < ROOMS; i++) {
+		printf("+--------+--------------+----------+\n");
+		printf("|   ID   | Asientos     | Precio   |\n");
+		printf("+--------+--------------+----------+\n");
+		printf("| %6d | %12d | %8.2f |\n", cinemaRooms[i].getId(), cinemaRooms[i].getSeatsNumber(), cinemaRooms[i].getPrice());
+		printf("+--------+--------------+----------+\n");
+
+		printf("+--------+----------+\n");
+		printf("|   ID   | Estado   |\n");
+		printf("+--------+----------+\n");
+		for (int j = 0; j < MATRIX_SEAT; j++) {
+			printf("| %6d | %-8s |\n", cinemaRooms[i].getRoomSeats((j / MATRIX_SEAT), (j % MATRIX_SEAT)).getId(),
+				cinemaRooms[i].getRoomSeats((j / MATRIX_SEAT), (j % MATRIX_SEAT)).getState());
+			printf("+--------+----------+\n");
+		}
+	}
+
+
+}
+
+void Cinema::printCinemaSchedules() {
+	printf("+------------+-------------------+-------+----------+----------+\n");
+	printf("|   Fecha    | Nombre de la peli | Sala  | Inicio   | Fin      |\n");
+	printf("+------------+-------------------+-------+----------+----------+\n");
+	for (int i = 0; i < SCHEDULES; i++) {
+		printf("| %-10s | %-17s | %5d | %8s | %8s |\n",
+			cinemaSchedules[i].getDate(), cinemaSchedules[i].getMovie().getName(),
+			cinemaSchedules[i].getRoom().getId(), cinemaSchedules[i].getStartHour(),
+			cinemaSchedules[i].getEndHour());
+		printf("+------------+-------------------+-------+----------+----------+\n");
+	}
+}
+
+void  Cinema::printCinemaBookings() {
+	
+	for (int i = 0; i < BOOKINGS; i++) {
+		printf("+------------+-------------------+-------+----------+----------+----------+----------+\n");
+		printf("| Booking ID | Fecha            | Película | Sala  | Inicio   | Fin      | Precio   |\n");
+		printf("+------------+-------------------+-------+----------+----------+----------+----------+\n");
+		printf("| %10d | %-17s | %-17s | %5d | %8s | %8s | %8.2f |\n",
+			cinemaBookings[i].getBookingId(),
+			cinemaBookings[i].getSchedule().getDate(),
+			cinemaBookings[i].getSchedule().getMovie(),
+			cinemaBookings[i].getSchedule().getRoom().getId(),
+			cinemaBookings[i].getSchedule().getStartHour(),
+			cinemaBookings[i].getSchedule().getEndHour(),
+			cinemaBookings[i].getTotalPrice());
+		for (int j = 0; i < LIMIT_SEATS; j++) {
+			printf("+--------+----------+\n");
+			printf("| Asiento | Estado   |\n");
+			printf("+--------+----------+\n");
+			printf("| %6d | %-8s |\n",
+				cinemaBookings[i].getBookSeats(j).getId(),
+				cinemaBookings[i].getBookSeats(j).getState());
+			printf("+--------+----------+\n");
+		}
+	}
+
 }
 
 #pragma endregion
