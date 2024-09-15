@@ -73,6 +73,8 @@ private:
 	int enterNumber();
 
 	Seat reserveSeat(int,int);
+
+	void initialize();
 #pragma endregion	
 
 #pragma region Edit vectors
