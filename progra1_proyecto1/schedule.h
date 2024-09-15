@@ -11,6 +11,7 @@ using namespace std;
 class Schedule
 {
 private:
+    int idSchedule;
     string date;
     string startHour;
     string endHour;
@@ -18,16 +19,18 @@ private:
     Room room; 
 
 public:
-    Schedule(string, string, string, Movie, Room);
+    Schedule(int, string, string, string, Movie, Room);
     Schedule();
     ~Schedule();
 
+    void setIdSchedule(int);
     void setDate(string);
     void setStartHour(string);
     void setEndHour(string);
     void setMovie(Movie);
     void setRoom(Room);
 
+    int getIdSchedule();
     string getDate();
     string getStartHour();
     string getEndHour();

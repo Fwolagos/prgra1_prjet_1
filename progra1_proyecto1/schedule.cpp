@@ -2,7 +2,8 @@
 
 
 #pragma region Constructors
-Schedule::Schedule(string date, string startHour, string endHour, Movie movie, Room room) {
+Schedule::Schedule(int idSchedule,string date, string startHour, string endHour, Movie movie, Room room) {
+	this->idSchedule = idSchedule;
 	this->date = date;
 	this->startHour = startHour;
 	this->endHour = endHour;
@@ -11,6 +12,7 @@ Schedule::Schedule(string date, string startHour, string endHour, Movie movie, R
 
 }
 Schedule::Schedule() {
+	idSchedule = -1;
 	date = "00/00/00";
 	startHour = "24:60";
 	endHour = "24:60";
@@ -23,6 +25,10 @@ Schedule::~Schedule() {
 #pragma endregion
 
 #pragma region Sets
+void Schedule::setIdSchedule(int idSchedule) {
+	this->idSchedule = idSchedule;
+}
+
 void Schedule::setDate(string date) {
 	this->date = date;
 }
@@ -45,6 +51,11 @@ void Schedule::setRoom(Room room) {
 #pragma endregion
 
 #pragma region Gets
+
+int Schedule::getIdSchedule() {
+	return idSchedule;
+}
+
 string Schedule::getDate() {
 	return date;
 }
