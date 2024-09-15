@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 	Cinema fwolagosSanVito = Cinema();
-	fwolagosSanVito.menus();
+	fwolagosSanVito.menu();
 	
 }
 

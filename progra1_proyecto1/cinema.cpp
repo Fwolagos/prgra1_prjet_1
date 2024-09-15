@@ -178,12 +178,12 @@ void Cinema::about() {
 	cout << endl;
 	system("pause");
 
-	menus();
+	menu();
 
 
 }
 
-void Cinema::menus() {	
+void Cinema::menu() {	
 	int option = 0;
 
 	header("principal");
@@ -230,7 +230,7 @@ void Cinema::menus() {
 			printCinemaMovies();
 		}
 		else {
-			menus();
+			menu();
 		}
 		
 		
@@ -253,7 +253,7 @@ void Cinema::menus() {
 			printCinemaRooms();
 		}
 		else {
-			menus();
+			menu();
 		}
 	}
 
@@ -273,7 +273,7 @@ void Cinema::menus() {
 			printCinemaSchedules();
 		}
 		else {
-			menus();
+			menu();
 		}
 	}
 
@@ -293,7 +293,7 @@ void Cinema::menus() {
 			printCinemaBookings();
 		}
 		else {
-			menus();
+			menu();
 		}
 	}
 
@@ -313,17 +313,17 @@ void Cinema::menus() {
 			printCinemaSales();
 		}
 		else {
-			menus();
+			menu();
 		}
 	}
 
 	if (option == 10) {
 		initialize();
-		menus();
+		menu();
 	}
 
 	else {
-		menus();
+		menu();
 	}
 }
 
@@ -366,7 +366,7 @@ Seat Cinema::reserveSeat(int idSchedule, int idSeat) {
 }
 
 void Cinema::initialize() {
-	/*Movie movie = Movie("Avatar", 3, "viaje en el espacio", 5, "espa;ol");
+	Movie movie = Movie("Avatar", 3, "viaje en el espacio", 5, "espa;ol");
 	Room room = Room(111, 20000);
 	Schedule schedule = Schedule(404, "25/02/2005", "5:00.pm", "8:00.pm", movie, room);
 	Booking booking = Booking(999, 20000,5, schedule);
@@ -375,66 +375,66 @@ void Cinema::initialize() {
 	setCinemaRooms(room, 1);
 	setCinemaSchedules(schedule, 1);
 	setCinemaBooking(booking, 1);
-	setCinemaSales(sale, 1);*/
+	setCinemaSales(sale, 1);
 
-	// Películas
-	Movie movie1 = Movie("Avatar", 3, "Un viaje espacial", 5, "Español");
-	Movie movie2 = Movie("Inception", 2, "Sueños dentro de sueños", 5, "Inglés");
-	Movie movie3 = Movie("Matrix", 2, "Realidad virtual", 4, "Inglés");
-	Movie movie4 = Movie("Titanic", 3, "Romance en el océano", 5, "Español");
-	Movie movie5 = Movie("Star Wars", 2, "Batallas espaciales", 5, "Inglés");
+	//// Películas
+	//Movie movie1 = Movie("Avatar", 3, "Un viaje espacial", 5, "Español");
+	//Movie movie2 = Movie("Inception", 2, "Sueños dentro de sueños", 5, "Inglés");
+	//Movie movie3 = Movie("Matrix", 2, "Realidad virtual", 4, "Inglés");
+	//Movie movie4 = Movie("Titanic", 3, "Romance en el océano", 5, "Español");
+	//Movie movie5 = Movie("Star Wars", 2, "Batallas espaciales", 5, "Inglés");
 
-	setCinemaMovies(movie1, 0);
-	setCinemaMovies(movie2, 1);
-	setCinemaMovies(movie3, 2);
-	setCinemaMovies(movie4, 3);
-	setCinemaMovies(movie5, 4);
+	//setCinemaMovies(movie1, 0);
+	//setCinemaMovies(movie2, 1);
+	//setCinemaMovies(movie3, 2);
+	//setCinemaMovies(movie4, 3);
+	//setCinemaMovies(movie5, 4);
 
-	// Salas
-	Room room1 = Room(1, 10000);
-	Room room2 = Room(2, 15000);
+	//// Salas
+	//Room room1 = Room(1, 10000);
+	//Room room2 = Room(2, 15000);
 
-	setCinemaRooms(room1, 0);
-	setCinemaRooms(room2, 1);
+	//setCinemaRooms(room1, 0);
+	//setCinemaRooms(room2, 1);
 
-	// Horarios
-	Schedule schedule1 = Schedule(101, "25/12/2024", "14:00", "16:30", movie1, room1);
-	Schedule schedule2 = Schedule(102, "26/12/2024", "17:00", "19:30", movie2, room1);
-	Schedule schedule3 = Schedule(103, "27/12/2024", "20:00", "22:30", movie3, room2);
-	Schedule schedule4 = Schedule(104, "28/12/2024", "12:00", "14:30", movie4, room2);
-	Schedule schedule5 = Schedule(105, "29/12/2024", "15:00", "17:30", movie5, room1);
+	//// Horarios
+	//Schedule schedule1 = Schedule(101, "25/12/2024", "14:00", "16:30", movie1, room1);
+	//Schedule schedule2 = Schedule(102, "26/12/2024", "17:00", "19:30", movie2, room1);
+	//Schedule schedule3 = Schedule(103, "27/12/2024", "20:00", "22:30", movie3, room2);
+	//Schedule schedule4 = Schedule(104, "28/12/2024", "12:00", "14:30", movie4, room2);
+	//Schedule schedule5 = Schedule(105, "29/12/2024", "15:00", "17:30", movie5, room1);
 
-	setCinemaSchedules(schedule1, 0);
-	setCinemaSchedules(schedule2, 1);
-	setCinemaSchedules(schedule3, 2);
-	setCinemaSchedules(schedule4, 3);
-	setCinemaSchedules(schedule5, 4);
+	//setCinemaSchedules(schedule1, 0);
+	//setCinemaSchedules(schedule2, 1);
+	//setCinemaSchedules(schedule3, 2);
+	//setCinemaSchedules(schedule4, 3);
+	//setCinemaSchedules(schedule5, 4);
 
-	// Reservas
-	Booking booking1 = Booking(1001, 30000, 3, schedule1);
-	Booking booking2 = Booking(1002, 20000, 2, schedule2);
-	Booking booking3 = Booking(1003, 40000, 4, schedule3);
-	Booking booking4 = Booking(1004, 10000, 1, schedule4);
-	Booking booking5 = Booking(1005, 50000, 5, schedule5);
+	//// Reservas
+	//Booking booking1 = Booking(1001, 30000, 3, schedule1);
+	//Booking booking2 = Booking(1002, 20000, 2, schedule2);
+	//Booking booking3 = Booking(1003, 40000, 4, schedule3);
+	//Booking booking4 = Booking(1004, 10000, 1, schedule4);
+	//Booking booking5 = Booking(1005, 50000, 5, schedule5);
 
-	setCinemaBooking(booking1, 0);
-	setCinemaBooking(booking2, 1);
-	setCinemaBooking(booking3, 2);
-	setCinemaBooking(booking4, 3);
-	setCinemaBooking(booking5, 4);
+	//setCinemaBooking(booking1, 0);
+	//setCinemaBooking(booking2, 1);
+	//setCinemaBooking(booking3, 2);
+	//setCinemaBooking(booking4, 3);
+	//setCinemaBooking(booking5, 4);
 
-	// Ventas
-	Sale sale1 = Sale(booking1, 123456789, 11112222);
-	Sale sale2 = Sale(booking2, 987654321, 33334444);
-	Sale sale3 = Sale(booking3, 192837465, 55556666);
-	Sale sale4 = Sale(booking4, 564738291, 77778888);
-	Sale sale5 = Sale(booking5, 876543219, 99990000);
+	//// Ventas
+	//Sale sale1 = Sale(booking1, 123456789, 11112222);
+	//Sale sale2 = Sale(booking2, 987654321, 33334444);
+	//Sale sale3 = Sale(booking3, 192837465, 55556666);
+	//Sale sale4 = Sale(booking4, 564738291, 77778888);
+	//Sale sale5 = Sale(booking5, 876543219, 99990000);
 
-	setCinemaSales(sale1, 0);
-	setCinemaSales(sale2, 1);
-	setCinemaSales(sale3, 2);
-	setCinemaSales(sale4, 3);
-	setCinemaSales(sale5, 4);
+	//setCinemaSales(sale1, 0);
+	//setCinemaSales(sale2, 1);
+	//setCinemaSales(sale3, 2);
+	//setCinemaSales(sale4, 3);
+	//setCinemaSales(sale5, 4);
 
 }
 

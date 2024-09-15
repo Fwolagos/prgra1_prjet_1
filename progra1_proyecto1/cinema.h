@@ -26,11 +26,11 @@ class Cinema
 {
 private:
 #pragma region Attributes
-	Movie cinemaMovies[MOVIES];
-	Room cinemaRooms[ROOMS];
-	Schedule cinemaSchedules[SCHEDULES];
-	Booking cinemaBookings[BOOKINGS];
-	Sale cinemaSales[SALES];
+	Movie cinemaMovies[MOVIES];    /**< Arreglo de películas. */
+	Room cinemaRooms[ROOMS];       /**< Arreglo de salas. */
+	Schedule cinemaSchedules[SCHEDULES];  /**< Arreglo de horarios. */
+	Booking cinemaBookings[BOOKINGS];     /**< Arreglo de reservas. */
+	Sale cinemaSales[SALES];        /**< Arreglo de ventas. */
 #pragma endregion	
 
 #pragma region methods
@@ -70,10 +70,25 @@ private:
 	 */
 	void about();
 
+	/**
+	 * @brief Ingresa un número y lo devuelve.
+	 * Esta funcion evita que el programa falle al
+	 * agregar una letra donde no van.
+	 * @return Número ingresado por el usuario.
+	 */
 	int enterNumber();
 
-	Seat reserveSeat(int,int);
+	/**
+	 * @brief Reserva un asiento para una película.
+	 * @param idSchedule ID del horario.
+	 * @param seatNumber Número del asiento.
+	 * @return Asiento reservado.
+	 */
+	Seat reserveSeat(int, int);
 
+	/**
+	 * @brief Inicializa datos estáticos.
+	 */
 	void initialize();
 #pragma endregion	
 
@@ -82,41 +97,107 @@ private:
 #pragma endregion
 
 #pragma region Add in vectors
-	///void add(string);
+	/**
+	 * @brief Agrega una película.
+	 */
 	void addMovie();
+
+	/**
+	 * @brief Agrega un horario.
+	 */
 	void addSchedule();
+
+	/**
+ * @brief Agrega una sala.
+ */
 	void addRoom();
+
+	/**
+ * @brief Agrega una reserva.
+ */
 	void addBooking();
+
+	/**
+	 * @brief Agrega una venta.
+	 */
 	void addSale();
-	
+
 #pragma endregion
 
 #pragma region Search Algorithms
 
-
+	/**
+	 * @brief Busca un elemento por nombre en un vector.
+	 * @param type Tipo de elemento.
+	 * @param name Nombre del elemento.
+	 * @return Índice del elemento encontrado.
+	 */
 	int searchInVectorByName(string, string);
 
+	/**
+* @brief Busca un elemento por ID en un vector.
+* @param type Tipo de elemento.
+* @param id ID del elemento.
+* @return Índice del elemento encontrado.
+*/
 	int searchInVectorById(string, int);
 
+	/**
+ * @brief Busca un elemento por nombre.
+ * @param type Tipo de elemento.
+ * @param name Nombre del elemento.
+ * @return Índice del elemento encontrado.
+ */
 	int searchByName(string, string);
 
+	/**
+	 * @brief Busca un elemento por ID en un vector.
+	 * @param type Tipo de elemento.
+	 * @param id ID del elemento.
+	 * @return Índice del elemento encontrado.
+	 */
 	int	searchById(string, int);
 #pragma endregion
 
 #pragma region Show information
+	/**
+	 * @brief Imprime las películas.
+	 */
 	void printCinemaMovies();
+
+	/**
+ * @brief Imprime las salas.
+ */
 	void printCinemaRooms();
+
+	/**
+	 * @brief Imprime los horarios.
+	 */
 	void printCinemaSchedules();
+
+	/**
+	 * @brief Imprime las reservas.
+	 */
 	void printCinemaBookings();
+
+	/**
+	 * @brief Imprime las ventas.
+	 */
 	void printCinemaSales();
 #pragma endregion
-	
-	
+
+
 public:
 
 #pragma region constructors
+	/**
+	 * @brief Constructor por defecto.
+	 */
 	Cinema();
-	//Cinema(Movie, Room, Schedule, Booking, Sale);
+
+	/**
+	 * @brief Destructor.
+	 */
 	~Cinema();
 #pragma endregion
 
@@ -146,7 +227,7 @@ public:
  * @param position Índice en el arreglo de salas donde se asignará el objeto `Room`.
  *
  * @note Asegúrate de que `position` sea un índice válido para evitar errores.
- */ 
+ */
 	void setCinemaRooms(Room, int);
 
 	/**
@@ -194,7 +275,11 @@ public:
 #pragma endregion
 
 #pragma region Gets
-
+	/**
+	 * @brief Obtiene una sala en una posición específica.
+	 * @param position Índice de la sala.
+	 * @return Sala en la posición especificada.
+	 */
 	Movie getCinemaMovies(int);//posicion del objeto a devolver
 
 	/**
@@ -213,14 +298,33 @@ public:
  */
 	Room getCinemaRooms(int);
 
-
+	/**
+	 * @brief Obtiene un horario en una posición específica.
+	 * @param position Índice del horario.
+	 * @return Horario en la posición especificada.
+	 */
 	Schedule getCinemaSchedules(int);
+
+	/**
+	 * @brief Obtiene una reserva en una posición específica.
+	 * @param position Índice de la reserva.
+	 * @return Reserva en la posición especificada.
+	 */
 	Booking getCinemaBookings(int);
+
+	/**
+	 * @brief Obtiene una venta en una posición específica.
+	 * @param position Índice de la venta.
+	 * @return Venta en la posición especificada.
+	 */
 	Sale getCinemaSales(int);
 #pragma endregion	
 
 #pragma region Public methods
-	void menus();
+	/**
+ * @brief Muestra el menú principal.
+ */
+	void menu();
 #pragma endregion
 
 };
