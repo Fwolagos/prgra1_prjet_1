@@ -61,7 +61,7 @@ Este proyecto utiliza clases para representar los componentes principales del si
    ```bash
    ./cine
    ```
-
+4. **Opcional, Descargar el ejecutable de la carpeta:**
 ---
 
 ## Funcionalidades del Sistema
