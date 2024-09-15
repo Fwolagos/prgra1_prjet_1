@@ -4,6 +4,7 @@
 #include "seat.h"
 #include <iostream>
 #define MATRIX_SEAT 10
+#define PRICE 5000
 
 class Room
 {
