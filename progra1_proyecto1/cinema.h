@@ -25,12 +25,15 @@ using namespace std;
 class Cinema
 {
 private:
+#pragma region Attributes
 	Movie cinemaMovies[MOVIES];
 	Room cinemaRooms[ROOMS];
 	Schedule cinemaSchedules[SCHEDULES];
 	Booking cinemaBookings[BOOKINGS];
 	Sale cinemaSales[SALES];
+#pragma endregion	
 
+#pragma region methods
 	/**
  * @brief Imprime títulos decorados en la consola.
  *
@@ -67,17 +70,45 @@ private:
 	 */
 	void about();
 
-
-	void add(string);
-	void edit(string, string);
-	void menus(string);
-	int searchInVectorByName(string, string);
-	int searchInVectorById(string, int);
 	int input();
+
+	Seat reserveSeat(int,int);
+#pragma endregion	
+
+#pragma region Edit vectors
+	void edit(string, string);
+#pragma endregion
+
+#pragma region Add in vectors
+	///void add(string);
+	void addMovie();
+	void addSchedule();
+	void addRoom();
+	void addBooking();
+	void addSale();
+	
+#pragma endregion
+
+#pragma region Search Algorithms
+
+
+	int searchInVectorByName(string, string);
+
+	int searchInVectorById(string, int);
+
+	int searchByName(string, string);
+
+	int	searchById(string, int);
+#pragma endregion
+
+#pragma region Show information
 	void printCinemaMovies();
 	void printCinemaRooms();
 	void printCinemaSchedules();
 	void printCinemaBookings();
+#pragma endregion
+	
+	
 public:
 
 #pragma region constructors
@@ -184,6 +215,10 @@ public:
 	Booking getCinemaBookings(int);
 	Sale getCinemaSales(int);
 #pragma endregion	
+
+#pragma region Public methods
+	void menus(string);
+#pragma endregion
 
 };
 #endif

@@ -156,76 +156,272 @@ void Cinema::about() {
 	return;
 }
 
-void Cinema::add(string changeAttribute) {
-	/// Tipo: pelicula
-	/// Tipo: salas
-	/// Tipo: horarios
+void Cinema::menus(string menuType) {}
 
-	if (changeAttribute == "pelicula") {
-		for (int i = 0; i < MOVIES; i++) {
-			if (cinemaMovies[i].getName() != "") {
-				string name, synapse, languaje;
-				int duration, reviews;
+int Cinema::input() {
+	double value = 0;
+	cout << "Ingrese unicamente numero." << endl;
+	bool isValid = true;
 
-				cout << "Ingrese el nombre de la pelicual: " << endl;
-				cin >> name;
-				cinemaMovies[i].setName(name);
-				cout << "Ingrese la duracion de la pelicula: " << endl;
-				duration = input();
-				cinemaMovies[i].setDuration(duration);
-				cout << "Ingrese la synapsis de la pelicula: " << endl;
-				cin >> synapse;
-				cinemaMovies[i].setSynapse(synapse);
-				cout << "Ingrese la calificacion de la pelicula del 0 al 5: " << endl;
-				reviews = input();
-				cinemaMovies[i].setReviews(reviews);
-				cout << "Ingrese en que lenguaje esta la pelicula: " << endl;
-				cin >> languaje;
-				cinemaMovies[i].setLanguage(languaje);
-				return;
-			}
+	while (isValid) {
+		cin >> value;
+		if (cin.fail()) {                                        // Verifica si la entrada falló
+			cin.clear();                                         // Limpia el estado de error de cin 
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora el resto de la línea
+			cout << "Opcion no valida. Por favor, intente de nuevo.\n";
+		}
+		else {
+			isValid = false;
+
 		}
 	}
-	if (changeAttribute == "horarios") {
-		for (int i = 0; i < SCHEDULES; i++) {
-			if (cinemaSchedules[i].getDate() == "00/00/00") {///bueno aqui nos puede dar errores para tenerlos en cuenta
-				string date;
-				string startHour;
-				string endHour;
-
-				cout << "Ingrese la fecha en el que se tramitira la pelicual: (Use un formato 00/00/00) " << endl;
-
-
-				return;
-			}
-		}
-	}
-	if (changeAttribute == "salas") {
-		for (int i = 0; i < ROOMS; i++) {
-			if (cinemaRooms[i].getId() == -1) {///bueno aqui nos puede dar errores para tenerlos en cuenta
-				int id;
-				double price;
-				cout << "Ingrese la id correspodiente para la sala: " << endl;
-				id = input();
-				cinemaRooms[i].setId(id);
-				cout << "Ingrese el costo de la entrada: " << endl;
-				price = input();
-				cinemaRooms[i].setPrice(price);
-				return;
-			}
-		}
-	}
+	return value;
 }
 
+Seat Cinema::reserveSeat(int idSchedule, int idSeat) {
+	if (cinemaSchedules[idSchedule].getRoom().
+		getRoomSeats(idSeat / MATRIX_SEAT, idSeat % MATRIX_SEAT).
+		getState() != "Available") {
+		cout << "El asiento esta ocupado elija otro: " << endl;
+		idSeat = input();
+		reserveSeat(idSchedule, idSeat);
+	}
+
+	cinemaSchedules[idSchedule].
+		getRoom().
+		getRoomSeats(idSeat / MATRIX_SEAT, idSeat % MATRIX_SEAT).
+		setState("Reserved");
+
+	return cinemaSchedules[idSchedule].
+		getRoom().getRoomSeats(idSeat / MATRIX_SEAT, idSeat % MATRIX_SEAT);
+}
+
+#pragma region Edit vectors
 void Cinema::edit(string changeAttribute, string movieName) {
 	/// Tipo: pelicula
 	/// Tipo: salas
 	/// Tipo: horarios
 
 }
+#pragma endregion
 
-void Cinema::menus(string menuType) {}
+#pragma region Add in vectors
 
+void Cinema::addMovie(){
+	for (int i = 0; i < MOVIES; i++) {
+		if (cinemaMovies[i].getName() != "") {
+			string name, synapse, languaje;
+			int duration, reviews;
+
+			cout << "Ingrese el nombre de la pelicual: " << endl;
+			cin >> name;
+			cinemaMovies[i].setName(name);
+			cout << "Ingrese la duracion de la pelicula: " << endl;
+			duration = input();
+			cinemaMovies[i].setDuration(duration);
+			cout << "Ingrese la synapsis de la pelicula: " << endl;
+			cin >> synapse;
+			cinemaMovies[i].setSynapse(synapse);
+			cout << "Ingrese la calificacion de la pelicula del 0 al 5: " << endl;
+			reviews = input();
+			cinemaMovies[i].setReviews(reviews);
+			cout << "Ingrese en que lenguaje esta la pelicula: " << endl;
+			cin >> languaje;
+			cinemaMovies[i].setLanguage(languaje);
+			return;
+		}
+	}
+}
+
+void Cinema::addSchedule() {
+	for (int i = 0; i < SCHEDULES; i++) {
+		if (cinemaSchedules[i].getDate() == "00/00/00") {///bueno aqui nos puede dar errores para tenerlos en cuenta
+			string date;
+			string startHour;
+			string endHour;
+			string movieName;
+			int idRoom;
+			printCinemaMovies();
+			cout << "Escriba el nombre de la pelicula que se desea trasmitir" << endl;
+			cin >> movieName;
+			cinemaSchedules[i].setMovie(cinemaMovies[searchByName("pelicula", movieName)]);
+
+			cout << "Ingrese la fecha en el que se trasmitira la pelicula: (Use un formato 00/00/00) " << endl;
+			cin >> date;
+			cinemaSchedules[i].setDate(date);
+
+			cout << "A que horas inicia la pelicual: " << endl;
+			cin >> startHour;
+			cinemaSchedules[i].setStartHour(startHour);
+
+			cout << "A que hora termina la pelicual: " << endl;
+			cin >> endHour;
+			cinemaSchedules[i].setEndHour(endHour);
+
+			printCinemaRooms();
+			cout << "En que sala se va a trasmitir la pelicula: " << endl;
+			idRoom = input();
+			cinemaSchedules[i].setRoom(cinemaRooms[searchById("salas", idRoom)]);
+
+			header("matenimiento");
+			cout << "Su horario fue añadido con mucho exito" << endl;
+
+			system("pause");
+
+			return;
+		}
+	}
+}
+
+void Cinema::addRoom() {
+	for (int i = 0; i < ROOMS; i++) {
+		if (cinemaRooms[i].getId() == -1) {///bueno aqui nos puede dar errores para tenerlos en cuenta
+			int id;
+			double price;
+			cout << "Ingrese la id correspodiente para la sala: " << endl;
+			id = input();
+			cinemaRooms[i].setId(id);
+			cout << "Ingrese el costo de la entrada: " << endl;
+			price = input();
+			cinemaRooms[i].setPrice(price);
+
+			header("mantenimiento");
+			cout << "Su pelicula fue agregada exitosamente" << endl;
+
+			system("pause");
+
+			return;
+		}
+	}
+}
+
+void Cinema::addBooking() {
+	for (int i = 0; i < BOOKINGS; i++) {
+		if (cinemaBookings[i].getBookingId() == -1) {///bueno aqui nos puede dar errores para tenerlos en cuenta
+			int idSchedule;
+			int numberOfSeats;
+			int totalPrice;
+			printCinemaSchedules();
+
+			cout << "Ingrese la id del Horario donde se encuentra la peli que deceas ver: " << endl;
+			idSchedule = input();
+			idSchedule = searchById("horarios", idSchedule);
+			cinemaBookings[i].setSchedule(cinemaSchedules[idSchedule]);
+
+			cout << "Ingrese la cantidad de asientos que decea reservar: " << endl;
+			numberOfSeats = input();
+			if (numberOfSeats > LIMIT_SEATS) {
+				numberOfSeats = LIMIT_SEATS;
+			}
+			for (int j = 0; j < numberOfSeats; j++) {
+				int idSeat;
+				cout << "Ingrese el numero de la butaca: " << endl;
+				idSeat = input();
+				cinemaBookings[i].setBookSeats(reserveSeat(idSchedule, idSeat), j);
+				
+			}
+
+			totalPrice = cinemaBookings[i].getSchedule().getRoom().getPrice() * numberOfSeats;
+			cinemaBookings[i].settotalPrice(totalPrice);
+
+			cinemaBookings[i].setBookingId(i);
+
+			header("reserva");
+			cout << "Su reserva fue todo un exito" << endl;
+
+			system("pause");
+
+
+			return;
+		}
+	}
+}
+
+void Cinema::addSale() {
+	for (int i = 0; i < SALES; i++) {
+		int idCostumer;
+		int cartNumber;
+		int idBooking;
+		printCinemaBookings();
+
+		cout << "Ingrese la id de su reserva: " << endl;
+		idBooking = input();
+		idBooking = searchById("reservas", idBooking);
+		cinemaSales[i].setBooking(cinemaBookings[idBooking]);
+
+		cout << "Por favor ingrese su Cedula de cliente vip: " << endl;
+		idCostumer = input();
+		cinemaSales[i].setIdCostumer(idCostumer);
+
+		cout << "Por favor ingrese su numero de targeta y los tres numeros de atras: " << endl;
+		idCostumer = input();
+		cinemaSales[i].setIdCostumer(idCostumer);
+
+		header("venta");
+		cout << "Su compra a sido un exito por favor disfrute de su peli" << endl;
+
+		system("pause");
+
+	}
+}
+
+#pragma endregion
+
+#pragma region Search algorithms
+
+int Cinema::searchByName(string type, string name) {
+	int position = 0;
+	if (type == "pelicula") {
+		position = searchInVectorByName("pelicula", name);
+		if (position == -1) {
+			cout << "Pelicula no encontrada, por favor vuela a intentar:" << endl;
+			cin >> name;
+			searchByName(type, name);
+		}
+		return position;
+	}
+	if (type == "horarios") {
+		position = searchInVectorByName("horarios", name);
+		if (position == -1) {
+			cout << "horario no encontrado, por favor vuela a intentar:" << endl;
+			cin >> name;
+			searchByName(type, name);
+		}
+		return position;
+	}
+}
+
+int	Cinema::searchById(string type, int id) {
+	int position = 0;
+	if (type == "salas") {
+		position = searchInVectorById("salas", id);
+		if (position == -1) {
+			cout << "Sala no encontrada, por favor vuela a intentar:" << endl;
+			id = input();
+			searchById(type, id);
+		}
+		return position;
+	}
+	if (type == "reservas") {
+		position = searchInVectorById("reservas", id);
+		if (position == -1) {
+			cout << "reserva no encontrada, por favor vuela a intentar:" << endl;
+			id = input();
+			searchById(type, id);
+		}
+		return position;
+	}
+	if (type == "ventas") {
+		position = searchInVectorById("ventas", id);
+		if (position == -1) {
+			cout << "venta no encontrada, por favor vuela a intentar:" << endl;
+			id = input();
+			searchById(type, id);
+		}
+		return position;
+	}
+
+}
 
 int Cinema::searchInVectorByName(string vector, string name) {
 	/// Busqueda por: pelicula
@@ -284,26 +480,9 @@ int Cinema::searchInVectorById(string vector, int id) {
 	return -1;
 }
 
-int Cinema::input() {
-	double value = 0;
-	cout << "Ingrese unicamente numero." << endl;
-	bool isValid = true;
+#pragma endregion
 
-	while (isValid) {
-		cin >> value;
-		if (cin.fail()) {                                        // Verifica si la entrada falló
-			cin.clear();                                         // Limpia el estado de error de cin 
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora el resto de la línea
-			cout << "Opcion no valida. Por favor, intente de nuevo.\n";
-		}
-		else {
-			isValid = false;
-
-		}
-	}
-	return value;
-}
-
+#pragma region Show information algorithms
 void Cinema::printCinemaMovies() {
 	printf("+-----------------------+---------+-------------------------+---------+-----------+\n");
 	printf("| %-21s | %7s | %-23s | %7s | %-9s |\n", "Nombre", "Duración", "Sinopsis", "Reseñas", "Idioma");
@@ -353,7 +532,7 @@ void Cinema::printCinemaSchedules() {
 }
 
 void  Cinema::printCinemaBookings() {
-	
+
 	for (int i = 0; i < BOOKINGS; i++) {
 		printf("+------------+-------------------+-------+----------+----------+----------+----------+\n");
 		printf("| Booking ID | Fecha            | Película | Sala  | Inicio   | Fin      | Precio   |\n");
@@ -378,6 +557,7 @@ void  Cinema::printCinemaBookings() {
 	}
 
 }
+#pragma endregion
 
 #pragma endregion
 
