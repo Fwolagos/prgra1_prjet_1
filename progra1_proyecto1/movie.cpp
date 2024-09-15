@@ -2,11 +2,11 @@
 
 #pragma region builders
 Movie::Movie() {
-	name = "";
+	name = "null";
 	duration = 0;
-	synapse = "";
+	synapse = "null";
 	reviews = 0;
-	language = "";
+	language = "null";
 }
 
 Movie::Movie(string name, int duration, string synapse, int reviews, string language) {

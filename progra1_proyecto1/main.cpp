@@ -1,4 +1,5 @@
 #include <iostream>
+#include "cinema.h"
 using namespace std;
 
 #pragma region Functions_Declaration
@@ -7,6 +8,8 @@ using namespace std;
 
 
 int main() {
-	cout << "ejemplo para andy ";
+	Cinema fwolagosSanVito = Cinema();
+	fwolagosSanVito.menus();
+	
 }
 

@@ -70,7 +70,7 @@ private:
 	 */
 	void about();
 
-	int input();
+	int enterNumber();
 
 	Seat reserveSeat(int,int);
 #pragma endregion	
@@ -106,6 +106,7 @@ private:
 	void printCinemaRooms();
 	void printCinemaSchedules();
 	void printCinemaBookings();
+	void printCinemaSales();
 #pragma endregion
 	
 	
@@ -217,7 +218,7 @@ public:
 #pragma endregion	
 
 #pragma region Public methods
-	void menus(string);
+	void menus();
 #pragma endregion
 
 };
