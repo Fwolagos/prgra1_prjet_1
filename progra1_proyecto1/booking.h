@@ -12,12 +12,14 @@ using namespace std;
 class Booking
 {
 private:
+    int bookingId;
     Schedule schedule; //*
     Seat bookSeats[LIMIT_SEATS]; //Limite de 5 asientos por reserva
     double totalPrice;
-    int bookingId;
+    
 
 public:
+    Booking(int, double,int, Schedule);
     Booking();
     ~Booking();
     void setSchedule(Schedule);

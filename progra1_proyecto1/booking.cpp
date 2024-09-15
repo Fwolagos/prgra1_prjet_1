@@ -1,6 +1,18 @@
 #include "booking.h"
 
 #pragma region Constructors
+Booking::Booking(int bookingId, double totalPrice,int numberSeats, Schedule schedule) {
+	this->schedule = schedule;
+	if (numberSeats > LIMIT_SEATS) {
+		numberSeats = LIMIT_SEATS;
+	}
+	for (int i = 0; i < LIMIT_SEATS; i++) {
+		bookSeats[i] = Seat(i+1,"Reserved");
+	}
+	this->totalPrice = totalPrice;
+	this->bookingId = bookingId;
+}
+
 Booking::Booking() {
 	schedule = Schedule();
 	for (int i = 0; i < LIMIT_SEATS; i++) {
