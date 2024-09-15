@@ -48,7 +48,7 @@ Este proyecto utiliza clases para representar los componentes principales del si
    git clone https://github.com/Fwolagos/prgra1_prjet_1.git
    ```
 
-2. **Compila el proyecto:**
+2. **Compila el proyecto:   (Solo si eres usuario linux)**
 
    Si estás utilizando un compilador como `g++`:
 
@@ -56,12 +56,16 @@ Este proyecto utiliza clases para representar los componentes principales del si
    g++ -o cine main.cpp Movie.cpp Room.cpp Schedule.cpp Booking.cpp Sale.cpp Cinema.cpp -std=c++11
    ```
 
-3. **Ejecuta el programa:**
+3. **Ejecuta el programa:   (Solo si eres usuario linux)**
 
    ```bash
    ./cine
    ```
 4. **Opcional, Descargar el ejecutable de la carpeta:**
+    
+ ```bash
+   https://github.com/Fwolagos/prgra1_prjet_1/blob/main/Ejecutable/progra1_proyecto1.exe
+   ```
 ---
 
 ## Funcionalidades del Sistema
