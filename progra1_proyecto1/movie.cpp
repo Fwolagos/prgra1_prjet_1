@@ -56,7 +56,7 @@ void Movie::setSynapse(string synapse) {
 	this->synapse = synapse;
 }
 
-void Movie::setReviews(int duration) {
+void Movie::setReviews(int reviews) {
 	this->reviews = reviews;
 }
 
