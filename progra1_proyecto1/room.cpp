@@ -40,7 +40,7 @@ double Room::getPrice() {
 	return price;
 }
 
-Seat Room::getroomSeats(int row, int column) {//row and column
+Seat Room::getRoomSeats(int row, int column) {//row and column
 	return roomSeats[row][column];
 }
 #pragma endregion

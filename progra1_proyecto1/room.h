@@ -27,7 +27,7 @@ public:
     int getId();
     int getSeatsNumber();
     double getPrice();
-    Seat getroomSeats(int,int);//row and column
+    Seat getRoomSeats(int,int);//row and column
 };
 #endif
 
