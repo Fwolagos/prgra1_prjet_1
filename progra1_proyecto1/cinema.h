@@ -14,6 +14,8 @@
 
 #include <iostream>
 using namespace std;
+#include <string>
+
 
 #include "movie.h"
 #include "room.h"

@@ -450,25 +450,30 @@ void Cinema::edit(string changeAttribute, string movieName) {
 #pragma region Add in vectors
 
 void Cinema::addMovie() {
+	
 	for (int i = 0; i < MOVIES; i++) {
 		if (cinemaMovies[i].getName() == "null") {
 			string name, synapse, languaje;
 			int duration, reviews;
 			cout << endl;
 			cout << "Ingrese el nombre de la pelicula: " << endl;
-			cin >> name;
+			cin.ignore();
+			getline(cin,name);	
+			///cin >> name;
 			cinemaMovies[i].setName(name);
 			cout << "Ingrese la duracion de la pelicula: " << endl;
 			duration = enterNumber();
 			cinemaMovies[i].setDuration(duration);
 			cout << "Ingrese la synapsis de la pelicula: " << endl;
-			cin >> synapse;
+			cin.ignore();
+			getline(cin, synapse);			
 			cinemaMovies[i].setSynapse(synapse);
 			cout << "Ingrese la calificacion de la pelicula del 0 al 5: " << endl;
 			reviews = enterNumber();
 			cinemaMovies[i].setReviews(reviews);
 			cout << "Ingrese en que lenguaje esta la pelicula: " << endl;
-			cin >> languaje;
+			cin.ignore();
+			getline(cin, languaje);			
 			cinemaMovies[i].setLanguage(languaje);
 			return;
 		}
@@ -492,21 +497,25 @@ void Cinema::addSchedule() {
 
 			printCinemaMovies();
 			cout << "Escriba el nombre de la pelicula que se desea trasmitir" << endl;
-			cin >> movieName;
+			cin.ignore();
+			getline(cin, movieName);		
 			peli = getCinemaMovies(searchByName("pelicula", movieName));
 			cinemaSchedules[i].setMovie(peli);
 			///cinemaSchedules[i].setMovie(cinemaMovies[searchByName("pelicula", movieName)]);
 
 			cout << "Ingrese la fecha en el que se trasmitira la pelicula: (Use un formato 00/00/00) " << endl;
-			cin >> date;
+			cin.ignore();
+			getline(cin, date);		
 			cinemaSchedules[i].setDate(date);
 
 			cout << "A que horas inicia la pelicual: " << endl;
-			cin >> startHour;
+			cin.ignore();
+			getline(cin, startHour);			
 			cinemaSchedules[i].setStartHour(startHour);
 
 			cout << "A que hora termina la pelicual: " << endl;
-			cin >> endHour;
+			cin.ignore();
+			getline(cin, endHour);
 			cinemaSchedules[i].setEndHour(endHour);
 
 			printCinemaRooms();
@@ -627,7 +636,8 @@ int Cinema::searchByName(string type, string name) {
 		position = searchInVectorByName("pelicula", name);
 		if (position == -1) {
 			cout << "Pelicula no encontrada, por favor vuela a intentar:" << endl;
-			cin >> name;
+			cin.ignore();
+			getline(cin, name);
 			position = searchByName(type, name);
 		}
 		return position;
@@ -636,7 +646,8 @@ int Cinema::searchByName(string type, string name) {
 		position = searchInVectorByName("horarios", name);
 		if (position == -1) {
 			cout << "horario no encontrado, por favor vuela a intentar:" << endl;
-			cin >> name;
+			cin.ignore();
+			getline(cin, name);
 			position = searchByName(type, name);
 		}
 		return position;
